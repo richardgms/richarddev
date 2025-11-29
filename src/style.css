@@ -1007,8 +1007,34 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
+  :root {
+    --section-padding: 4rem 0;
+  }
+
+  .hero {
+    padding: 6rem 0 4rem;
+    text-align: center;
+  }
+
   .hero h1 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
+  }
+
+  .hero .subtitle {
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    text-align: center;
   }
 
   .hero-container,
@@ -1022,6 +1048,40 @@ footer {
     gap: 2rem;
   }
 
+  .hero-image {
+    order: -1;
+    margin-bottom: 2rem;
+  }
+
+  .image-wrapper {
+    width: 280px;
+    height: 280px;
+  }
+
+  /* Ajuste do Floating Card para Mobile */
+  .floating-card {
+    position: relative;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin: -1.5rem auto 2rem;
+    transform: none !important;
+    width: max-content;
+    max-width: 90%;
+  }
+
+  .card-1 {
+    margin-left: auto;
+  }
+
+  .stats {
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    justify-content: center;
+  }
+
+  /* Navigation */
   .nav-links {
     display: none;
   }
@@ -1054,10 +1114,6 @@ footer {
 
   .hamburger {
     display: block;
-  }
-
-  .hero-image {
-    order: -1;
   }
 
   .footer-links {
