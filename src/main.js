@@ -112,7 +112,10 @@ const runAnimations = () => {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.5 });
+  }, {
+    threshold: 0.5,
+    rootMargin: "0px 0px -50px 0px"
+  });
 
   stats.forEach(stat => observer.observe(stat));
 };

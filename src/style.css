@@ -797,6 +797,19 @@ img {
   font-size: 0.9rem;
 }
 
+.portfolio-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  transition: var(--transition);
+}
+
+.portfolio-item:hover .portfolio-link {
+  transform: translateX(5px);
+}
+
 /* FAQ */
 .faq {
   padding: var(--section-padding);
@@ -1005,36 +1018,63 @@ footer {
   background-color: var(--nav-bg);
 }
 
+/* Prevenção Global de Overflow */
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   :root {
-    --section-padding: 4rem 0;
+    --section-padding: 3rem 0;
+    /* Padding reduzido para mobile */
   }
 
+  .container {
+    padding: 0 1.25rem;
+    /* Margem lateral segura */
+  }
+
+  /* Hero Section Rigorosa */
   .hero {
-    padding: 6rem 0 4rem;
+    padding: 5rem 0 3rem;
     text-align: center;
+    overflow: hidden;
+    /* Garante que nada vaze da hero */
   }
 
   .hero h1 {
-    font-size: 2.25rem;
+    font-size: 2rem;
+    /* Tamanho seguro */
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .badge {
+    margin: 1rem 0;
   }
 
   .hero .subtitle {
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1.1rem;
+    margin: 0 auto 2rem;
+    font-size: 1rem;
+    max-width: 100%;
   }
 
   .hero-buttons {
     justify-content: center;
     flex-direction: column;
     gap: 1rem;
+    width: 100%;
+    margin-bottom: 1rem;
   }
 
   .hero-buttons .btn {
     width: 100%;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .hero-container,
@@ -1043,42 +1083,66 @@ footer {
   .services-grid,
   .portfolio-grid,
   .footer-container {
-    grid-template-columns: 1fr;
+    display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .hero-image {
-    order: -1;
-    margin-bottom: 2rem;
+    order: 0;
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
   }
 
   .image-wrapper {
-    width: 280px;
-    height: 280px;
+    width: 240px;
+    /* Tamanho controlado */
+    height: 240px;
+    margin: 0 auto 1.5rem;
+    /* Margem inferior para o card */
   }
 
-  /* Ajuste do Floating Card para Mobile */
+  /* Floating Card - Transformado em Bloco Estático */
   .floating-card {
-    position: relative;
-    top: auto !important;
-    left: auto !important;
-    right: auto !important;
-    bottom: auto !important;
-    margin: -1.5rem auto 2rem;
+    position: static !important;
+    /* Remove flutuação */
     transform: none !important;
-    width: max-content;
-    max-width: 90%;
+    margin: 0 auto 1.5rem !important;
+    width: 100%;
+    max-width: 320px;
+    /* Limite de largura */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Centraliza conteúdo interno */
+    gap: 1rem;
+    background: rgba(15, 23, 42, 0.95);
+    /* Mais opaco para leitura */
+    animation: none !important;
+    /* Remove animação para estabilidade */
+    box-shadow: var(--shadow-md);
   }
 
   .card-1 {
     margin-left: auto;
+    /* Reset de margens antigas */
   }
 
-  .stats {
-    gap: 1.5rem;
-    padding-top: 1.5rem;
+  .hero-image .stats {
+    gap: 2rem;
+    padding-top: 0;
+    margin-top: 0;
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
     justify-content: center;
+    flex-wrap: wrap;
+    /* Permite quebra se necessário */
+    width: 100%;
+    border-top: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   }
 
   /* Navigation */
@@ -1098,6 +1162,7 @@ footer {
     box-shadow: var(--shadow-lg);
     border-bottom: 1px solid var(--border-color);
     animation: slideDown 0.3s ease;
+    z-index: 1000;
   }
 
   @keyframes slideDown {
@@ -1114,11 +1179,36 @@ footer {
 
   .hamburger {
     display: block;
+    z-index: 1001;
   }
 
   .footer-links {
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
     text-align: center;
+  }
+
+  /* Otimização Cards de Serviço Mobile */
+  .service-card {
+    padding: 2rem 1.5rem;
+    /* Reduzido de 3rem */
+  }
+
+  .service-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-list {
+    margin: 1rem 0 1.5rem;
+  }
+
+  .feature-list li {
+    margin-bottom: 0.25rem;
   }
 }
