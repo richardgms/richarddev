@@ -2,8 +2,8 @@
 
 Bem-vindo ao repositório do meu portfólio profissional. Este projeto foi desenvolvido para apresentar meus serviços de desenvolvimento web, projetos recentes e diferenciais competitivos.
 
-![Preview do Projeto](./public/assets/images/preview.jpg)
-*(Nota: Adicione uma imagem de preview em `public/assets/images/preview.jpg` se desejar)*
+![Preview do Projeto](./public/assets/images/preview.webp)
+*(Nota: Adicione uma imagem de preview em `public/assets/images/preview.webp` se desejar)*
 
 ## 🚀 Tecnologias Utilizadas
 
