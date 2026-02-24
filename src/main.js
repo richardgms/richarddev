@@ -1,124 +1,189 @@
 import './style.css';
 
+// =========================================================================
 // Mobile Menu Toggle
-const hamburger = document.querySelector('.hamburger');
-const navLinks = document.querySelector('.nav-links');
+// =========================================================================
+try {
+  const hamburger = document.querySelector('.hamburger');
+  const navLinks = document.querySelector('.nav-links');
 
-if (hamburger) {
-  hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    // Animação simples do hamburger
-    hamburger.classList.toggle('toggle');
-  });
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      hamburger.classList.toggle('toggle');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('toggle');
+      });
+    });
+  }
+} catch (error) {
+  console.error('Error initializing mobile menu:', error);
 }
 
-// Fechar menu ao clicar em um link
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    hamburger.classList.remove('toggle');
-  });
-});
-
+// =========================================================================
 // FAQ Accordion
-const accordionHeaders = document.querySelectorAll('.accordion-header');
+// =========================================================================
+try {
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
 
-accordionHeaders.forEach(header => {
-  header.addEventListener('click', () => {
-    const item = header.parentElement;
+  if (accordionHeaders.length > 0) {
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        if (!item) return;
 
-    // Fecha outros itens abertos (opcional, estilo "accordion" estrito)
-    document.querySelectorAll('.accordion-item').forEach(i => {
-      if (i !== item) {
-        i.classList.remove('active');
-      }
+        document.querySelectorAll('.accordion-item').forEach(i => {
+          if (i !== item) i.classList.remove('active');
+        });
+
+        item.classList.toggle('active');
+      });
     });
-
-    item.classList.toggle('active');
-  });
-});
-
-// Theme Toggle removido
-
-
-// Spotlight Effect Logic
-const spotlightCards = document.querySelectorAll('.spotlight-card');
-
-spotlightCards.forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    card.style.setProperty('--mouse-x', `${x}px`);
-    card.style.setProperty('--mouse-y', `${y}px`);
-  });
-});
-
-// Header Shadow on Scroll
-const header = document.getElementById('header');
-if (header) {
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  });
+  }
+} catch (error) {
+  console.error('Error initializing FAQ:', error);
 }
 
-// CountUp Animation
-const runAnimations = () => {
-  const stats = document.querySelectorAll('.stat-number');
+// =========================================================================
+// Spotlight Effect Logic (Optimized with requestAnimationFrame)
+// =========================================================================
+try {
+  const spotlightCards = document.querySelectorAll('.spotlight-card');
 
-  const animate = (el) => {
-    const target = parseInt(el.getAttribute('data-target'));
-    const suffix = el.getAttribute('data-suffix') || '';
-    const duration = parseInt(el.getAttribute('data-duration')) || 2000;
-    const easingType = el.getAttribute('data-easing') || 'easeOutQuart'; // Lê o tipo de easing
-    const start = 0;
-    const startTime = performance.now();
+  if (spotlightCards.length > 0) {
+    spotlightCards.forEach(card => {
+      let rafId = null;
 
-    // Easing functions
-    const easings = {
-      linear: (x) => x,
-      easeOutQuart: (x) => 1 - Math.pow(1 - x, 4)
-    };
+      card.addEventListener('mousemove', (e) => {
+        if (rafId) cancelAnimationFrame(rafId);
 
-    const update = (currentTime) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
+        rafId = requestAnimationFrame(() => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
 
-      // Aplica o easing selecionado
-      const ease = easings[easingType] ? easings[easingType](progress) : easings.easeOutQuart(progress);
+          card.style.setProperty('--mouse-x', `${x}px`);
+          card.style.setProperty('--mouse-y', `${y}px`);
+        });
+      });
+    });
+  }
+} catch (error) {
+  console.error('Error initializing Spotlight Effect:', error);
+}
 
-      const current = Math.floor(start + (target - start) * ease);
-      el.textContent = current + suffix;
+// =========================================================================
+// Header Shadow on Scroll (Optimized with requestAnimationFrame)
+// =========================================================================
+try {
+  const header = document.querySelector('.navbar');
+  if (header) {
+    let ticking = false;
 
-      if (progress < 1) {
-        requestAnimationFrame(update);
-      } else {
-        el.textContent = target + suffix; // Ensure final value
-      }
-    };
-
-    requestAnimationFrame(update);
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animate(entry.target);
-        observer.unobserve(entry.target);
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+          } else {
+            header.classList.remove('scrolled');
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     });
-  }, {
-    threshold: 0.5,
-    rootMargin: "0px 0px -50px 0px"
-  });
+  }
+} catch (error) {
+  console.error('Error initializing Header Scroll:', error);
+}
 
-  stats.forEach(stat => observer.observe(stat));
+// =========================================================================
+// CountUp Animation (Optimized and Isolated)
+// =========================================================================
+const runAnimations = () => {
+  try {
+    const stats = document.querySelectorAll('.stat-number');
+    if (stats.length === 0) return;
+
+    const animate = (el) => {
+      const target = parseInt(el.getAttribute('data-target')) || 0;
+      const suffix = el.getAttribute('data-suffix') || '';
+      const duration = parseInt(el.getAttribute('data-duration')) || 2000;
+      const easingType = el.getAttribute('data-easing') || 'easeOutQuart';
+      const start = 0;
+      const startTime = performance.now();
+
+      const easings = {
+        linear: (x) => x,
+        easeOutQuart: (x) => 1 - Math.pow(1 - x, 4)
+      };
+
+      const update = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const ease = easings[easingType] ? easings[easingType](progress) : easings.easeOutQuart(progress);
+
+        const current = Math.floor(start + (target - start) * ease);
+        el.textContent = current + suffix;
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = target + suffix;
+        }
+      };
+
+      requestAnimationFrame(update);
+    };
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.5,
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    stats.forEach(stat => observer.observe(stat));
+  } catch (error) {
+    console.error('Error running CountUp Animations:', error);
+  }
 };
 
-// Inicializa animações
 runAnimations();
+
+// =========================================================================
+// Phase 5 - Scroll Reveal Observer (Fade-Up)
+// =========================================================================
+try {
+  const revealElements = document.querySelectorAll('.reveal');
+
+  if (revealElements.length > 0) {
+    const revealCallback = function (entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+
+    const revealObserver = new IntersectionObserver(revealCallback, {
+      threshold: 0.15,
+      rootMargin: "0px 0px -50px 0px"
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  }
+} catch (error) {
+  console.error('Error initializing Scroll Reveal:', error);
+}

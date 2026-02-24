@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Evitar indexação acidental de assets privados (se houver no futuro)
+Disallow: /private/
+Disallow: /admin/
+
+Sitemap: https://richardgomes.com.br/sitemap.xml

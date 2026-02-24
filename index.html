@@ -39,8 +39,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Lexend:wght@300;400&family=Outfit:wght@400;500;700;800&display=swap"
     rel="stylesheet">
 
-  <!-- Phosphor Icons -->
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <!-- Phosphor Icons - Removed global CDN in favor of inline SVGs for performance -->
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -61,7 +60,7 @@
       {
         "@type": "ProfessionalService",
         "name": "Richard Gomes - Desenvolvimento Web",
-        "image": "https://richardgomes.com.br/assets/images/profile.jpg",
+        "image": "https://richardgomes.com.br/assets/images/profile.webp",
         "url": "https://richardgomes.com.br",
         "telephone": "+5583988073784",
         "priceRange": "$$",
@@ -96,7 +95,6 @@
           <li><a href="#servicos">Serviços</a></li>
           <li><a href="#portfolio">Portfólio</a></li>
           <li><a href="#faq">Dúvidas</a></li>
-          <li><a href="#faq">Dúvidas</a></li>
           <!-- Tema Claro removido -->
           <li><a href="#contato" class="btn-nav">Orçamento</a></li>
         </ul>
@@ -126,14 +124,16 @@
           </div>
           <div class="hero-image">
             <div class="image-wrapper spotlight-card">
-              <img src="/assets/images/profile.jpg" alt="Richard Gomes - Desenvolvedor Web">
+              <img src="/assets/images/profile.webp" alt="Richard Gomes - Desenvolvedor Web" loading="eager"
+                fetchpriority="high">
             </div>
-            <div class="placeholder-img">
-              <span>Sua Foto Aqui</span>
-              <small>(Salve como profile.jpg em public/assets/images)</small>
-            </div>
+
             <div class="floating-card card-1">
-              <i class="ph-fill ph-rocket-launch icon"></i>
+              <svg class="icon" width="1em" height="1em" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"
+                fill="currentColor">
+                <path
+                  d="M101.85,191.14C97.34,201,82.29,224,40,224a8,8,0,0,1-8-8c0-42.29,23-57.34,32.86-61.85a8,8,0,0,1,6.64,14.56c-6.43,2.93-20.62,12.36-23.12,38.91,26.55-2.5,36-16.69,38.91-23.12a8,8,0,1,1,14.56,6.64Zm122-144a16,16,0,0,0-15-15c-12.58-.75-44.73.4-71.4,27.07h0L88,108.7A8,8,0,0,1,76.67,97.39l26.56-26.57A4,4,0,0,0,100.41,64H74.35A15.9,15.9,0,0,0,63,68.68L28.7,103a16,16,0,0,0,9.07,27.16l38.47,5.37,44.21,44.21,5.37,38.49a15.94,15.94,0,0,0,10.78,12.92,16.11,16.11,0,0,0,5.1.83A15.91,15.91,0,0,0,153,227.3L187.32,193A16,16,0,0,0,192,181.65V155.59a4,4,0,0,0-6.83-2.82l-26.57,26.56a8,8,0,0,1-11.71-.42,8.2,8.2,0,0,1,.6-11.1l49.27-49.27h0C223.45,91.86,224.6,59.71,223.85,47.12Z" />
+              </svg>
               <div>
                 <strong>Alta Performance</strong>
                 <small>(Carregamento instantâneo)</small>
@@ -158,25 +158,45 @@
       <!-- Problema / Solução -->
       <section class="problem-solution">
         <div class="container">
-          <div class="section-header text-center">
+          <div class="section-header text-center reveal">
             <h2>Por que você está <span class="text-gradient">perdendo dinheiro</span>?</h2>
             <p>Hoje em dia, não ter um site ou ter um site ruim é dar clientes de graça para a concorrência.</p>
           </div>
           <div class="grid-3">
-            <div class="card spotlight-card">
-              <div class="card-icon"><i class="ph-duotone ph-trend-down"></i></div>
-              <h3>Invisibilidade</h3>
-              <p>Seu cliente procura no Google e encontra seu concorrente, não você.</p>
+            <div class="card spotlight-card reveal">
+              <div class="card-icon"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 256 256" fill="currentColor">
+                  <path d="M232,128v64H168Z" opacity="0.2" />
+                  <path
+                    d="M235.06,120.61a8,8,0,0,0-8.72,1.73L200,148.69,141.66,90.34a8,8,0,0,0-11.32,0L96,124.69,29.66,58.34A8,8,0,0,0,18.34,69.66l72,72a8,8,0,0,0,11.32,0L136,107.31,188.69,160l-26.35,26.34A8,8,0,0,0,168,200h64a8,8,0,0,0,8-8V128A8,8,0,0,0,235.06,120.61ZM224,184H187.31L224,147.31Z" />
+                </svg></div>
+              <h3>Sua Concorrência Está no Topo</h3>
+              <p>Enquanto você adia a criação de um posicionamento forte, outras empresas da sua região já estão
+                escalando e dominando o mercado.</p>
             </div>
-            <div class="card spotlight-card">
-              <div class="card-icon"><i class="ph-duotone ph-hourglass-high"></i></div>
-              <h3>Lentidão</h3>
-              <p>Sites antigos e lentos fazem 53% dos usuários desistirem em 3 segundos.</p>
+            <div class="card spotlight-card reveal">
+              <div class="card-icon"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 256 256" fill="currentColor">
+                  <path d="M192,64V75.64A8,8,0,0,1,188.82,82L128,128,67.2,82.4A8,8,0,0,1,64,76V64Z" opacity="0.2" />
+                  <path
+                    d="M184,24H72A16,16,0,0,0,56,40V76a16.07,16.07,0,0,0,6.4,12.8L114.67,128,62.4,167.2A16.07,16.07,0,0,0,56,180v36a16,16,0,0,0,16,16H184a16,16,0,0,0,16-16V180.36a16.09,16.09,0,0,0-6.35-12.77L141.27,128l52.38-39.59A16.09,16.09,0,0,0,200,75.64V40A16,16,0,0,0,184,24Zm0,16V56H72V40Zm0,176H72V180l56-42,56,42.35Zm-56-98L72,76V72H184v3.64Z" />
+                </svg></div>
+              <h3>Filtre Curiosos no WhatsApp</h3>
+              <p>Pare de perder tempo com quem não quer comprar. Um site profissional atua como seu melhor vendedor,
+                filtrando e educando o lead 24h.</p>
             </div>
-            <div class="card spotlight-card">
-              <div class="card-icon"><i class="ph-duotone ph-device-mobile-camera"></i></div>
-              <h3>Não Responsivo</h3>
-              <p>Se seu site não abre bem no celular, você ignora 90% do tráfego.</p>
+            <div class="card spotlight-card reveal">
+              <div class="card-icon"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 256 256" fill="currentColor">
+                  <path
+                    d="M192,40V216a16,16,0,0,1-16,16H80a16,16,0,0,1-16-16V40A16,16,0,0,1,80,24h96A16,16,0,0,1,192,40Z"
+                    opacity="0.2" />
+                  <path
+                    d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16Zm8,200a8,8,0,0,1-8,8H80a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h96a8,8,0,0,1,8,8ZM140,60a12,12,0,1,1-12-12A12,12,0,0,1,140,60Z" />
+                </svg></div>
+              <h3>81% Pesquisam no Google</h3>
+              <p>Antes de comprar qualquer coisa, seu cliente já procurou no Google. Se você não está lá, ele compra do
+                concorrente.</p>
             </div>
           </div>
         </div>
@@ -185,35 +205,90 @@
       <!-- Serviços -->
       <section id="servicos" class="services">
         <div class="container">
-          <div class="section-header">
+          <div class="section-header text-center reveal">
             <span class="tag">O Que Eu Faço</span>
             <h2>Soluções Digitais Completas</h2>
           </div>
           <div class="services-grid">
-            <div class="service-card featured spotlight-card">
-              <div class="service-content">
-                <h3>Landing Pages de Alta Conversão</h3>
-                <p>Páginas únicas focadas em uma única coisa: transformar visitantes em clientes. Perfeitas para
-                  lançamentos, produtos e serviços específicos.</p>
-                <ul class="feature-list">
-                  <li>Design Persuasivo</li>
-                  <li>Carregamento Ultra-rápido</li>
-                  <li>Integração com WhatsApp</li>
-                </ul>
-                <a href="#contato" class="link-arrow">Quero uma Landing Page &rarr;</a>
-              </div>
-            </div>
-            <div class="service-card spotlight-card">
+            <!-- Card 1: Sites Institucionais -->
+            <div class="service-card spotlight-card reveal">
               <div class="service-content">
                 <h3>Sites Institucionais</h3>
                 <p>A vitrine digital da sua empresa. Transmita autoridade e profissionalismo com um site completo e
                   elegante.</p>
                 <ul class="feature-list">
-                  <li>Multi-páginas</li>
-                  <li>SEO Otimizado</li>
-                  <li>Painel Admin (Opcional)</li>
+                  <li><span class="check"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 256 256" fill="currentColor">
+                        <path
+                          d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+                      </svg></span>Multi-páginas</li>
+                  <li><span class="check"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 256 256" fill="currentColor">
+                        <path
+                          d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+                      </svg></span>SEO Otimizado</li>
+                  <li><span class="check"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 256 256" fill="currentColor">
+                        <path
+                          d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+                      </svg></span>Painel Admin (Opcional)</li>
                 </ul>
-                <a href="#contato" class="link-arrow">Quero um Site &rarr;</a>
+                <a href="#contato" class="link-arrow">Quero um Site <span class="arrow-icon">&rarr;</span></a>
+              </div>
+            </div>
+
+            <!-- Card 2 (Centro): Landing Pages de Alta Conversão -->
+            <div class="service-card featured spotlight-card reveal">
+              <div class="featured-badge">Mais Escolhido</div>
+              <div class="service-content">
+                <h3>Landing Pages de Alta Conversão</h3>
+                <p>Páginas únicas focadas em uma única coisa: transformar visitantes em clientes. Perfeitas para
+                  lançamentos, produtos e serviços específicos.</p>
+                <ul class="feature-list">
+                  <li><span class="check"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 256 256" fill="currentColor">
+                        <path
+                          d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+                      </svg></span>Design Persuasivo</li>
+                  <li><span class="check"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 256 256" fill="currentColor">
+                        <path
+                          d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+                      </svg></span>Carregamento Ultra-rápido</li>
+                  <li><span class="check"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 256 256" fill="currentColor">
+                        <path
+                          d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+                      </svg></span>Integração com WhatsApp</li>
+                </ul>
+                <a href="#contato" class="link-arrow">Quero uma Landing Page <span class="arrow-icon">&rarr;</span></a>
+              </div>
+            </div>
+
+            <!-- Card 3: Páginas de Vendas para Infoprodutos -->
+            <div class="service-card spotlight-card reveal">
+              <div class="service-content">
+                <h3>Páginas de Vendas para Infoprodutos</h3>
+                <p>Estruturas preparadas para produtores digitais. Design focado em despertar desejo e maximizar o ROI
+                  de lançamentos.</p>
+                <ul class="feature-list">
+                  <li><span class="check"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 256 256" fill="currentColor">
+                        <path
+                          d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+                      </svg></span>Alta Taxa de Conversão</li>
+                  <li><span class="check"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 256 256" fill="currentColor">
+                        <path
+                          d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+                      </svg></span>Copywriting Visual</li>
+                  <li><span class="check"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 256 256" fill="currentColor">
+                        <path
+                          d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+                      </svg></span>Integração com Checkouts</li>
+                </ul>
+                <a href="#contato" class="link-arrow">Vender Infoproduto <span class="arrow-icon">&rarr;</span></a>
               </div>
             </div>
           </div>
@@ -223,26 +298,38 @@
       <!-- Diferencial (Método) -->
       <section class="method">
         <div class="container method-container">
-          <div class="method-text">
+          <div class="method-text reveal">
             <h2>Tecnologia de Ponta, <br>Custo Acessível.</h2>
             <p>Utilizo uma metodologia de <strong>Desenvolvimento Ágil</strong> que combina as melhores ferramentas do
               mercado com design premium.</p>
             <div class="benefits">
               <div class="benefit-item">
-                <span class="check"><i class="ph-bold ph-check"></i></span>
+                <span class="check"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 256 256" fill="currentColor">
+                    <path
+                      d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+                  </svg></span>
                 <p>Entrega rápida com <strong>Metodologia Ágil</strong></p>
               </div>
               <div class="benefit-item">
-                <span class="check"><i class="ph-bold ph-check"></i></span>
+                <span class="check"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 256 256" fill="currentColor">
+                    <path
+                      d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+                  </svg></span>
                 <p>Design exclusivo (sem templates prontos)</p>
               </div>
               <div class="benefit-item">
-                <span class="check"><i class="ph-bold ph-check"></i></span>
+                <span class="check"><svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 256 256" fill="currentColor">
+                    <path
+                      d="M232.49,80.49l-128,128a12,12,0,0,1-17,0l-56-56a12,12,0,1,1,17-17L96,183,215.51,63.51a12,12,0,0,1,17,17Z" />
+                  </svg></span>
                 <p>Código limpo e otimizado para o Google (SEO)</p>
               </div>
             </div>
           </div>
-          <div class="method-visual">
+          <div class="method-visual reveal">
             <div class="code-block">
               <div class="code-header">
                 <span class="dot red"></span>
@@ -251,15 +338,16 @@
               </div>
               <div class="code-content">
                 <pre><code>
-const sucesso = {
-  velocidade: "Máxima",
-  design: "Premium",
-  resultado: "Vendas"
+// Tech Stack & Performance SEO
+const richardStack = {
+  frameworks: ["React", "Next.js", "Vite"],
+  styling: ["Tailwind CSS", "Vanilla CSS"],
+  backend: ["Node.js", "Supabase"],
+  performance: ["WebP", "Lazy Loading"],
+  ui: ["Figma", "Design System"]
 };
 
-function alavancarNegocio() {
-  return sucesso;
-}
+// Resultado: Alta Conversão & Design Premium
                   </code></pre>
               </div>
             </div>
@@ -270,14 +358,14 @@ function alavancarNegocio() {
       <!-- Portfólio -->
       <section id="portfolio" class="portfolio">
         <div class="container">
-          <div class="section-header text-center">
+          <div class="section-header text-center reveal">
             <h2>Projetos Recentes</h2>
             <p>Veja o que é possível criar para o seu negócio.</p>
           </div>
           <div class="portfolio-grid">
             <!-- Projeto 1 -->
-            <a href="https://estigatotal.com.br/" target="_blank" class="portfolio-item">
-              <div class="portfolio-thumb project-1"></div>
+            <a href="https://estigatotal.com.br/" target="_blank" class="portfolio-item reveal">
+              <img src="/assets/images/Cards/estigacard.webp" alt="Estiga Total" class="portfolio-thumb" loading="lazy">
               <div class="portfolio-info">
                 <h4>Estiga Total</h4>
                 <p>Landing Page de Alta Conversão para Academia. Foco em matrículas e planos.</p>
@@ -285,20 +373,54 @@ function alavancarNegocio() {
               </div>
             </a>
             <!-- Projeto 2 -->
-            <a href="https://cicerojoias.com/" target="_blank" class="portfolio-item">
-              <div class="portfolio-thumb project-2"></div>
+            <a href="https://nutriboxfit.com.br/" target="_blank" class="portfolio-item reveal">
+              <img src="/assets/images/Cards/nutriboxcard.webp" alt="NutriBox" class="portfolio-thumb" loading="lazy">
               <div class="portfolio-info">
-                <h4>Cícero Joias</h4>
-                <p>E-commerce Institucional. Design premium para destacar autoridade e catálogo.</p>
+                <h4>NutriBox</h4>
+                <p>E-commerce de alimentação saudável. Design elegante (Dark Green) com foco em conversão de pedidos.
+                </p>
                 <span class="portfolio-link">Visitar site &rarr;</span>
               </div>
             </a>
             <!-- Projeto 3 -->
-            <a href="https://pedromedeiros.netlify.app/" target="_blank" class="portfolio-item">
-              <div class="portfolio-thumb project-3"></div>
+            <a href="https://leilaneandreia.com.br/" target="_blank" class="portfolio-item reveal">
+              <img src="/assets/images/Cards/leilanecard.webp" alt="Leilane Andreia" class="portfolio-thumb"
+                loading="lazy">
               <div class="portfolio-info">
-                <h4>Pedro Medeiros</h4>
-                <p>Personal Trainer & Consultoria. Página de vendas focada em captura de alunos.</p>
+                <h4>Leilane Andreia</h4>
+                <p>Portfólio Institucional Clean/Chic. Foco em transmitir elegância e autoridade no nicho de estética.
+                </p>
+                <span class="portfolio-link">Visitar site &rarr;</span>
+              </div>
+            </a>
+            <!-- Projeto 4 -->
+            <a href="https://josisouza.netlify.app/" target="_blank" class="portfolio-item reveal">
+              <img src="/assets/images/Cards/josicard.webp" alt="Josi Souza" class="portfolio-thumb" loading="lazy">
+              <div class="portfolio-info">
+                <h4>Josi Souza</h4>
+                <p>Site profissional focado em presença digital e conversão.
+                </p>
+                <span class="portfolio-link">Visitar site &rarr;</span>
+              </div>
+            </a>
+            <!-- Projeto 5 -->
+            <a href="https://cicerojoias.com/" target="_blank" class="portfolio-item reveal">
+              <img src="/assets/images/Cards/cicerocard.webp" alt="Cícero Joias" class="portfolio-thumb" loading="lazy">
+              <div class="portfolio-info">
+                <h4>Cícero Joias</h4>
+                <p>Catálogo digital de joias com design elegante e sofisticado.
+                </p>
+                <span class="portfolio-link">Visitar site &rarr;</span>
+              </div>
+            </a>
+            <!-- Projeto 6 -->
+            <a href="https://joandersonbc.netlify.app/" target="_blank" class="portfolio-item reveal">
+              <img src="/assets/images/Cards/joandersoncard.webp" alt="Joanderson Bombeiro" class="portfolio-thumb"
+                loading="lazy">
+              <div class="portfolio-info">
+                <h4>Joanderson Bombeiro</h4>
+                <p>Landing page focada em serviços de emergência e prevenção de incêndios.
+                </p>
                 <span class="portfolio-link">Visitar site &rarr;</span>
               </div>
             </a>
@@ -308,7 +430,7 @@ function alavancarNegocio() {
 
       <!-- FAQ -->
       <section id="faq" class="faq">
-        <div class="container small-container">
+        <div class="container">
           <div class="section-header text-center">
             <h2>Perguntas Frequentes</h2>
           </div>
@@ -366,13 +488,13 @@ function alavancarNegocio() {
           <a href="#portfolio">Portfólio</a>
         </div>
         <div class="footer-social">
-          <a href="#">Instagram</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">GitHub</a>
+          <a href="https://instagram.com/richard.sites" target="_blank">Instagram</a>
+          <a href="https://linkedin.com/in/richard-gomes" target="_blank">LinkedIn</a>
+          <a href="https://github.com/richardgms" target="_blank">GitHub</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 Richard Gomes - Todos os direitos reservados</p>
+        <p>&copy; 2026 Richard Gomes - Todos os direitos reservados</p>
       </div>
     </footer>
   </div>

@@ -122,3 +122,10 @@ Thumbs.db
 
 # Project specific
 planoexecucao.md
+
+# Agentes
+.agent/
+.agent(legacy)/
+
+# Planos
+plan/*

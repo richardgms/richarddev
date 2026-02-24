@@ -130,6 +130,7 @@ img {
 .text-gradient {
   background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -178,7 +179,6 @@ img {
 .navbar {
   background-color: var(--nav-bg);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-color);
   padding: 1rem 0;
   position: fixed;
   width: 100%;
@@ -257,7 +257,10 @@ img {
 
 /* Hero Section */
 .hero {
-  padding: 8rem 0 6rem;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: 8rem 0 4rem;
   background-color: var(--bg-color);
   /* Efeito de iluminação dramática (Luminária) */
   background-image: radial-gradient(circle at 70% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 60%),
@@ -463,7 +466,8 @@ img {
 .card {
   padding: 2rem;
   border-radius: var(--radius-lg);
-  background-color: var(--card-bg);
+  background-color: rgba(10, 15, 30, 0.85);
+  /* Fallback WCAG */
   backdrop-filter: var(--backdrop-blur);
   transition: var(--transition);
   border: 1px solid var(--border-color);
@@ -508,32 +512,29 @@ img {
 
 .services-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
 }
 
-.portfolio-item {
-  display: block;
-  /* Garante comportamento de bloco para tag <a> */
-  background-color: var(--card-bg);
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  border: 1px solid var(--border-color);
-  transition: var(--transition);
-}
 
 .service-card {
-  background-color: rgba(15, 23, 42, 0.6);
-  /* Mais transparente para o spotlight */
+  background-color: rgba(10, 15, 30, 0.85);
+  /* Base mais profunda contra o vazamento do Glassmorphism */
   backdrop-filter: var(--backdrop-blur);
   border-radius: var(--radius-lg);
   padding: 3rem;
   border: 1px solid var(--border-color);
-  transition: var(--transition);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
   position: relative;
   overflow: hidden;
   /* Necessário para o spotlight não vazar */
   z-index: 1;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  z-index: 10;
 }
 
 /* Spotlight Effect */
@@ -542,6 +543,22 @@ img {
   /* Remove qualquer borda física */
   --mouse-x: -1000px;
   --mouse-y: -1000px;
+  background-color: rgba(10, 15, 30, 0.85);
+  /* Seguro contra fundos brancos/iluminados da IA */
+  isolation: isolate;
+  /* Cria um Root Stacking Context protegendo contra vazamentos */
+  transform: translateZ(0);
+  /* Hardware Acceleration */
+  backface-visibility: hidden;
+}
+
+/* Legibilidade sobre Neon / Glassmorphism (Acessibilidade Nível 2) */
+.spotlight-card h3,
+.spotlight-card p,
+.spotlight-card .feature-list li,
+.floating-card strong,
+.floating-card small {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
 }
 
 .spotlight-card::before {
@@ -562,6 +579,9 @@ img {
   -webkit-mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
@@ -570,6 +590,8 @@ img {
   transition: opacity 0.3s ease;
   /* Resposta rápida para parecer luz real */
   z-index: 2;
+  will-change: transform, opacity;
+  /* Hardware Acceleration (FPS Boost em Celulares) */
 }
 
 .spotlight-card::after {
@@ -588,10 +610,19 @@ img {
   opacity: 0;
   transition: opacity 0.8s ease;
   /* Animação mais lenta */
+  will-change: opacity;
+  /* Otimização CSS Layers */
 }
 
 .spotlight-card:hover::after {
   opacity: 1;
+}
+
+@media (hover: none) {
+  .spotlight-card::after {
+    display: none;
+    /* Mitigação do Bug do Pincel Hover travado em Android/IOS */
+  }
 }
 
 /* Ajuste para elementos circulares (Profile Image) */
@@ -601,8 +632,28 @@ img {
 }
 
 .service-card.featured {
-  /* border-color removido pois agora é controlado pelo spotlight */
-  box-shadow: 0 0 30px rgba(37, 99, 235, 0.2);
+  border-top: 2px solid var(--accent-color) !important;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.85) 0%, rgba(10, 15, 30, 0.95) 100%);
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.2), 0 10px 40px -10px rgba(59, 130, 246, 0.3);
+}
+
+.featured-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: -3rem;
+  /* Revertido */
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.5rem 1.9rem 0.15rem 4.5rem;
+  /* Padding superior maior para empurrar o texto para baixo */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transform: rotate(45deg);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  text-align: center;
 }
 
 .service-card h3 {
@@ -615,18 +666,32 @@ img {
 }
 
 .feature-list li {
-  margin-bottom: 0.5rem;
-  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  line-height: 1.5;
+  color: #CBD5E1;
+  /* Texto ligeiramente mais claro para contraste */
 }
 
-.feature-list li::before {
-  content: "•";
-  color: var(--accent-color);
+.feature-list li .check {
   position: absolute;
   left: 0;
-  font-weight: bold;
+  top: 0.1rem;
+  /* Alinhamento sutil do ícone ao texto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-color);
+  width: auto;
+  height: auto;
+  background: transparent;
+  font-size: 1.2rem;
 }
+
+/* .feature-list li::before rule is not needed anymore since .check replaces it completely. But we should omit it by targeting it if it existed. It existed below, so we replace it with nothing. */
 
 .link-arrow {
   color: var(--accent-color);
@@ -634,10 +699,21 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  margin-top: 1rem;
+  transition: color 0.3s ease;
 }
 
-.link-arrow:hover {
-  gap: 0.75rem;
+.link-arrow .arrow-icon {
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .link-arrow {
+  color: var(--accent-hover);
+}
+
+.service-card:hover .link-arrow .arrow-icon,
+.link-arrow:hover .arrow-icon {
+  transform: translateX(6px);
 }
 
 /* Method */
@@ -749,38 +825,38 @@ img {
 }
 
 .portfolio-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   cursor: pointer;
+  background-color: transparent;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
 }
 
 .portfolio-thumb {
-  height: 250px;
-  background-color: #E2E8F0;
-  /* border-radius: var(--radius-md); removido para ficar quadrado em cima */
+  height: auto;
+  aspect-ratio: 4/3;
+  /* Impede AI Images de esticarem ou quebrarem o layout Matrix */
+  background-color: transparent;
   margin-bottom: 0;
-  /* Removido margem inferior */
   transition: var(--transition);
-  background-size: cover;
-  background-position: center;
+  object-fit: cover;
+  width: 100%;
+  display: block;
 }
 
 .portfolio-item:hover .portfolio-thumb {
   transform: scale(1.02);
 }
 
-/* Placeholders for portfolio images */
-.project-1 {
-  background-image: url('/assets/images/estiga-total.jpg');
-}
-
-.project-2 {
-  background-image: url('/assets/images/cicero-joias.jpg');
-}
-
-.project-3 {
-  background-image: url('/assets/images/pedro-medeiros.jpg');
-}
-
+/* Placeholders code removed in favor of HTML img tags */
 .portfolio-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   padding: 1.5rem;
   /* Adicionado padding interno */
 }
@@ -795,11 +871,20 @@ img {
 .portfolio-info p {
   color: var(--text-light);
   font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-height: calc(0.9rem * 1.6 * 3);
+  /* Garante espaço ocupado equivalente a 3 linhas */
 }
 
 .portfolio-link {
   display: inline-block;
-  margin-top: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
   font-size: 0.875rem;
   font-weight: 600;
   color: var(--accent-color);
@@ -922,6 +1007,7 @@ img {
   margin-bottom: 1rem;
   background: linear-gradient(to right, #FFFFFF, #93C5FD);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -1194,6 +1280,11 @@ body {
     /* Reduzido de 3rem */
   }
 
+  .service-card.featured {
+    padding-top: 4rem;
+    /* Evita que a faixa 'Mais Escolhido' cubra o título no mobile */
+  }
+
   .service-card h3 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
@@ -1210,5 +1301,66 @@ body {
 
   .feature-list li {
     margin-bottom: 0.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding-top: 8rem;
+  }
+}
+
+/* ========================================================================= */
+/* UX/UI Premium - FASE 5 (Scroll Reveal / Fade-Up) */
+/* ========================================================================= */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.5, 0, 0, 1), transform 0.8s cubic-bezier(0.5, 0, 0, 1);
+  will-change: opacity, transform;
+  /* Hardware Acceleration */
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delay gradual para grids de múltiplos itens */
+.services-grid .reveal:nth-child(1),
+.portfolio-grid .reveal:nth-child(1),
+.grid-3 .reveal:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.services-grid .reveal:nth-child(2),
+.portfolio-grid .reveal:nth-child(2),
+.grid-3 .reveal:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.services-grid .reveal:nth-child(3),
+.portfolio-grid .reveal:nth-child(3),
+.grid-3 .reveal:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+/* Acessibilidade: Desligar Motion Effects para usuários com Labirintite/Preferência de OS */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .spotlight-card::before,
+  .spotlight-card::after,
+  .image-wrapper img {
+    transition: none;
+    animation: none;
+  }
+
+  .floating-card {
+    animation: none;
   }
 }
