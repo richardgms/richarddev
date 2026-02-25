@@ -45,7 +45,9 @@
 
 /* Light Theme Removido */
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -53,14 +55,19 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-body);
   background-color: var(--bg-color);
   color: var(--text-color);
+  font-size: 1rem;
+  /* 16px min for mobile base compliance */
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
 h1,
@@ -112,7 +119,7 @@ img {
 }
 
 .section-header h2 {
-  font-size: 2.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   margin-bottom: 1rem;
 }
 
@@ -136,13 +143,16 @@ img {
 
 /* Buttons */
 .btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.875rem 2rem;
   border-radius: var(--radius-md);
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
   border: 2px solid transparent;
+  min-height: 44px;
 }
 
 .btn-primary {
@@ -214,6 +224,9 @@ img {
   font-weight: 500;
   font-size: 0.95rem;
   color: var(--text-color);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .nav-links a:hover {
@@ -225,6 +238,10 @@ img {
   color: white !important;
   padding: 0.5rem 1.25rem;
   border-radius: var(--radius-md);
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-nav:hover {
@@ -253,6 +270,9 @@ img {
 .hamburger {
   display: none;
   cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.25rem;
 }
 
 /* Hero Section */
@@ -291,7 +311,7 @@ img {
 }
 
 .hero h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   margin-bottom: 1.5rem;
   letter-spacing: -0.02em;
 }
@@ -361,8 +381,9 @@ img {
   overflow: hidden;
   /* Glow removido para evitar borda dupla com spotlight */
   /* box-shadow: 0 0 40px rgba(59, 130, 246, 0.4), 0 0 80px rgba(59, 130, 246, 0.2); */
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1 / 1;
   background-color: var(--surface-color);
   display: flex;
   align-items: center;
@@ -459,7 +480,7 @@ img {
 
 .grid-3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
 }
 
@@ -512,7 +533,7 @@ img {
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
 }
 
@@ -701,6 +722,7 @@ img {
   gap: 0.5rem;
   margin-top: 1rem;
   transition: color 0.3s ease;
+  min-height: 44px;
 }
 
 .link-arrow .arrow-icon {
@@ -739,7 +761,7 @@ img {
 
 .method-text p {
   color: var(--text-color);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .benefits {
@@ -765,6 +787,7 @@ img {
   font-size: 0.875rem;
   font-weight: bold;
   color: white;
+  flex-shrink: 0;
 }
 
 .benefit-item p {
@@ -772,14 +795,25 @@ img {
   margin: 0;
 }
 
+/* Adicionado encapsulamento Flexbox */
+.method-visual {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+}
+
 .code-block {
   background-color: #020617;
-  /* Sempre escuro para código */
   border-radius: var(--radius-lg);
   padding: 1.5rem;
   font-family: 'Fira Code', monospace;
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--border-color);
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  min-width: 0;
 }
 
 .code-header {
@@ -806,10 +840,21 @@ img {
   background-color: #10B981;
 }
 
+.code-content {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
 .code-content pre {
   color: #E2E8F0;
   font-size: 0.9rem;
-  overflow-x: auto;
+  /* Permite rolagem apenas local e subordina ao container */
+  white-space: pre;
+  margin: 0;
+  width: max-content;
 }
 
 /* Portfolio */
@@ -820,7 +865,7 @@ img {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 2rem;
 }
 
@@ -1065,6 +1110,18 @@ footer {
 .footer-social {
   display: flex;
   gap: 1rem;
+}
+
+.footer-links a,
+.footer-social a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-social a {
+  min-width: 44px;
 }
 
 .footer-bottom {
