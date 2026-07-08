@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors - using semantic names and HSL as defined in legacy style.css matching design spec */
+  --color-brand: #005beb;
+  /* Deep Blue */
+  --color-brand-hover: #004bbb;
+  --color-brand-light: #3380f2;
+  --color-background-base: #0A1428;
+  /* Dark Navy Base */
+  --color-background-deep: #060d1e;
+  /* Deeper section band (alternating rhythm) */
+  --color-surface: #101c36;
+  /* Slightly off-base surface */
+  --color-surface-hover: #162444;
+  --color-surface-glow: rgba(0, 93, 237, 0.15);
+  /* Soft neon glow */
+
+  /* Text */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #a3aed0;
+  /* Subdued text matching original dark mode */
+  --color-text-muted: #6b7a99;
+  --color-text-accent: var(--color-brand);
+
+  /* Typography */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-outfit), sans-serif;
+  --font-secondary: var(--font-lexend), sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Layout constraints matching legacy container */
+  --container-max-width: 1200px;
+
+  --animate-float: float 4s ease-in-out infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes scrollDown {
+    0%, 100% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(8px);
+    }
+  }
+}
+
+/* Base resets & dark mode enforcement */
+html {
+  color-scheme: dark;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[#0A1428] text-white font-sans antialiased overflow-x-hidden;
+  min-height: 100vh;
+}
+
+/* Glass & Glow Utility Classes (Migrated from legacy styles) */
+@layer components {
+  .spotlight-card {
+    @apply relative border-none rounded-2xl bg-[#0a0f1e]/85 isolation-auto overflow-hidden;
+    --mouse-x: -1000px;
+    --mouse-y: -1000px;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  .spotlight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+        rgba(0, 91, 235, 1),
+        transparent 40%), #292929;
+
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+    will-change: transform, opacity;
+  }
+
+  .spotlight-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(600px circle at var(--mouse-x) var(--mouse-y),
+        rgba(0, 91, 235, 0.1),
+        transparent 40%);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    will-change: opacity;
+  }
+
+  .spotlight-card:hover::after {
+    opacity: 1;
+  }
+
+  @media (hover: none) {
+    .spotlight-card::after {
+      display: none;
+    }
+  }
+
+  .text-gradient {
+    background: linear-gradient(90deg, #F8FAFC, #005beb);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Re-usable container replacing old .container class */
+  .layout-container {
+    @apply w-[90%] max-w-[1200px] mx-auto;
+  }
+
+  /* Hero — Variant A (editorial, generous + gradient) */
+  .hero-va {
+    background:
+      radial-gradient(ellipse 80% 60% at 80% 30%, rgba(0, 91, 235, 0.22), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 10% 80%, rgba(0, 91, 235, 0.10), transparent 60%),
+      var(--color-background-base);
+  }
+  .hero-va-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-va-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+    mask-image: linear-gradient(180deg, #000 60%, transparent);
+  }
+  .va-portrait-overlay {
+    background: linear-gradient(180deg, transparent 45%, rgba(10, 20, 40, 0.88));
+  }
+}
