@@ -1,0 +1,15 @@
+# Configuração de deploy — Next.js na Netlify
+# O repositório agora tem o projeto Next na raiz (a versão Vite foi removida).
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# Runtime oficial da Netlify para Next.js (SSR, rotas, headers, imagens).
+# A Netlify normalmente injeta esse plugin automaticamente ao detectar Next,
+# mas deixamos explícito para não depender das configurações do painel.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  NODE_VERSION = "20"
