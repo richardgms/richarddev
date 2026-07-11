@@ -116,12 +116,12 @@ export function AccordionContent({
       role="region"
       aria-labelledby={`${item.id}-trigger`}
       className={cn(
-        'grid transition-all duration-300 ease-in-out',
-        isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
+        'grid transition-all duration-300 ease-in-out overflow-hidden',
+        isOpen ? 'grid-rows-[1fr] opacity-100 px-6 pb-6' : 'grid-rows-[0fr] opacity-0 px-6 pb-0',
         className
       )}
     >
-      <div className="overflow-hidden px-6 pb-6 text-[#a3aed0] leading-relaxed">
+      <div className="overflow-hidden min-h-0 text-[#a3aed0] leading-relaxed">
         {children}
       </div>
     </div>

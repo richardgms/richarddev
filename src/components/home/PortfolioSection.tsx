@@ -94,8 +94,21 @@ export function PortfolioSection() {
                             <CardContent className="p-6 flex flex-col flex-grow relative z-10 -mt-8 bg-surface">
                                 <h4 className="text-xl font-bold text-white mb-2 group-hover:text-brand transition-colors">{project.title}</h4>
                                 <p className="text-sm text-[#a3aed0] leading-relaxed mb-6 flex-grow">{project.desc}</p>
-                                <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand transition-colors">
-                                    Visitar site <span className="transition-transform group-hover:translate-x-1">&rarr;</span>
+                                <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-brand transition-colors">
+                                    Visitar site 
+                                    <svg 
+                                        className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" 
+                                        viewBox="0 0 24 24" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        strokeWidth="2.5" 
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round"
+                                    >
+                                        <path d="M15 3h6v6"/>
+                                        <path d="M10 14 21 3"/>
+                                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                                    </svg>
                                 </span>
                             </CardContent>
                             </SpotlightCard>

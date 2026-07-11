@@ -92,7 +92,7 @@ body {
 /* Glass & Glow Utility Classes (Migrated from legacy styles) */
 @layer components {
   .spotlight-card {
-    @apply relative border-none rounded-2xl bg-[#0a0f1e]/85 isolation-auto overflow-hidden;
+    @apply relative border-none rounded-2xl bg-[#0a0f1e]/85 isolation-auto;
     --mouse-x: -1000px;
     --mouse-y: -1000px;
     transform: translateZ(0);

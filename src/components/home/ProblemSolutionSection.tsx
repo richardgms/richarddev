@@ -42,8 +42,7 @@ export function ProblemSolutionSection() {
                         </div>
                         <h3 className="text-xl font-bold text-white tracking-tight">Sua Concorrência Está no Topo</h3>
                         <p className="text-[#a3aed0] leading-relaxed">
-                            Enquanto você adia a criação de um posicionamento forte, outras empresas da sua região já estão
-                            escalando e dominando o mercado.
+                            Enquanto você adia a criação de um <span className="font-medium text-white">posicionamento forte</span>, outras empresas da sua região já estão <span className="font-medium text-white">escalando e dominando o mercado</span>.
                         </p>
                     </SpotlightCard>
 
@@ -61,8 +60,7 @@ export function ProblemSolutionSection() {
                         </div>
                         <h3 className="text-xl font-bold text-white tracking-tight">Filtre Curiosos no WhatsApp</h3>
                         <p className="text-[#a3aed0] leading-relaxed">
-                            Pare de perder tempo com quem não quer comprar. Um site profissional atua como seu melhor vendedor,
-                            filtrando e educando o lead 24h.
+                            Pare de perder tempo com quem não quer comprar. Um <span className="font-medium text-white">site profissional</span> atua como seu melhor vendedor, <span className="font-medium text-white">filtrando e educando o lead 24h</span>.
                         </p>
                     </SpotlightCard>
 
@@ -79,8 +77,7 @@ export function ProblemSolutionSection() {
                         </div>
                         <h3 className="text-xl font-bold text-white tracking-tight">81% Pesquisam no Google</h3>
                         <p className="text-[#a3aed0] leading-relaxed">
-                            Antes de comprar qualquer coisa, seu cliente já procurou no Google. Se você não está lá, sem dúvida ele compra do
-                            concorrente.
+                            Antes de comprar qualquer coisa, seu cliente já <span className="font-medium text-white">procurou no Google</span>. Se você não está lá, sem dúvida ele <span className="font-medium text-white">compra do concorrente</span>.
                         </p>
                     </SpotlightCard>
                 </div>

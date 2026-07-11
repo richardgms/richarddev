@@ -44,7 +44,7 @@ export function FAQSection() {
                             <AccordionItem
                                 key={index}
                                 value={`item-${index}`}
-                                className={`bg-surface border border-white/5 transition-all duration-700 ease-out rounded-2xl overflow-hidden hover:border-white/10 data-[state=open]:border-brand/30 data-[state=open]:shadow-[0_4px_20px_var(--color-brand)] ${isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
+                                className={`bg-surface border border-white/5 transition-all duration-700 ease-out rounded-2xl overflow-hidden hover:border-white/10 data-[state=open]:border-brand/30 data-[state=open]:shadow-[0_4px_20px_rgba(0,91,235,0.2)] ${isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'
                                     }`}
                                 style={{ transitionDelay: `${index * 150}ms` }}
                             >

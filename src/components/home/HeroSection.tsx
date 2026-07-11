@@ -11,35 +11,32 @@ export function HeroSection() {
             <div className="hero-va-bg" aria-hidden="true" />
             <div className="hero-va-grid" aria-hidden="true" />
 
-            <div className="layout-container relative z-10 w-full">
+            <div className="layout-container relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(380px,480px)] gap-10 lg:gap-20 items-center">
                     {/* Copy column */}
                     <div className="flex flex-col gap-7 lg:gap-8 animate-[fadeInUp_0.8s_ease-out]">
                         {/* Issue / eyebrow */}
                         <div className="flex items-center gap-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-text-muted">
-                            <span className="text-brand font-semibold">N° 026</span>
+                            <span className="text-brand font-semibold">FULLSTACK & IA</span>
                             <span className="w-[60px] h-px bg-brand" />
-                            <span>Edição freelance · Q2 2026</span>
+                            <span>Landing Pages de Alta Conversão</span>
                         </div>
 
                         {/* Headline */}
                         <h1 className="font-display font-extrabold text-white tracking-[-0.04em] leading-[0.9] text-5xl md:text-6xl lg:text-7xl xl:text-[110px]">
                             <span className="block font-secondary italic font-medium tracking-[-0.01em] leading-[1.1] text-text-secondary text-[0.42em] mb-3.5">
-                                Desenvolvimento web sob medida —
+                                Design premium de alta conversão —
                             </span>
-                            IA pra
+                            Sites que
                             <br />
                             <em className="not-italic text-gradient">
-                                Pequenos
-                                <br />
-                                Negócios.
+                                convertem.
                             </em>
                         </h1>
 
                         {/* Deck */}
                         <p className="font-secondary italic font-light text-base md:text-lg leading-[1.55] text-text-secondary max-w-[460px] m-0">
-                            &ldquo;Sites, automações e agentes de IA para prestadores de serviço e
-                            negócios locais que precisam crescer sem inflar a operação.&rdquo;
+                            Desenvolvo <span className="font-medium text-white">landing pages sofisticadas</span>, <span className="font-medium text-white">sites institucionais de alto padrão</span> e <span className="font-medium text-white">automações integradas</span>. Posicione sua marca com autoridade e atraia <span className="font-medium text-white">leads qualificados</span> todos os dias direto no seu <span className="font-medium text-white">WhatsApp</span>.
                         </p>
 
                         {/* CTAs */}
@@ -58,9 +55,12 @@ export function HeroSection() {
                             </Button>
                             <a
                                 href="#portfolio"
-                                className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.1em] text-text-secondary hover:text-white transition-colors"
+                                className="group inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.1em] text-text-secondary hover:text-white transition-colors"
                             >
-                                Ver projetos →
+                                <span>Ver projetos</span>
+                                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21.0791 12.519C21.0744 12.7044 21.0013 12.8884 20.8599 13.0299L14.8639 19.0301C14.5711 19.3231 14.0962 19.3233 13.8032 19.0305C13.5103 18.7377 13.5101 18.2629 13.8029 17.9699L18.5233 13.2461L4.32813 13.2461C3.91391 13.2461 3.57813 12.9103 3.57812 12.4961C3.57812 12.0819 3.91391 11.7461 4.32812 11.7461L18.5158 11.7461L13.8029 7.03016C13.5101 6.73718 13.5102 6.2623 13.8032 5.9695C14.0962 5.6767 14.5711 5.67685 14.8639 5.96984L20.813 11.9228C20.976 12.0603 21.0795 12.2661 21.0795 12.4961C21.0795 12.5038 21.0794 12.5114 21.0791 12.519Z" fill="currentColor"/>
+                                </svg>
                             </a>
                         </div>
                     </div>
@@ -91,10 +91,10 @@ export function HeroSection() {
                                 </div>
                                 <div className="text-right">
                                     <div className="font-display font-extrabold text-3xl md:text-[38px] leading-none tracking-[-0.02em] text-white">
-                                        100<span className="text-brand">/100</span>
+                                        <span className="text-brand">+</span>30
                                     </div>
                                     <div className="font-mono text-[9px] uppercase tracking-[0.18em] text-text-secondary mt-0.5">
-                                        Lighthouse
+                                        Projetos entregues
                                     </div>
                                 </div>
                             </div>
@@ -112,12 +112,12 @@ export function HeroSection() {
                         Aceitando 2 projetos
                     </span>
                     <span className="text-white/20">/</span>
-                    <span>Lighthouse 100 · Core Web Vitals</span>
+                    <span>Satisfação garantida</span>
                     <span className="text-white/20 hidden lg:inline">/</span>
                     <span className="hidden lg:inline">SEO técnico</span>
                     <span className="text-white/20 hidden lg:inline">/</span>
                     <span className="hidden lg:inline">Automações com IA</span>
-                    <span className="ml-auto text-brand">EDIÇÃO 026 · 04 · 2026</span>
+                    <span className="ml-auto text-brand">JOÃO PESSOA · PB · BRASIL</span>
                 </div>
             </div>
 
