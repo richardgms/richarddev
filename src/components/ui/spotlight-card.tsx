@@ -3,13 +3,16 @@
 import { useCallback, useRef } from 'react';
 import type { HTMLAttributes } from 'react';
 import { cn } from '@/lib/utils';
+import { useViewportFocus } from '@/hooks/useViewportFocus';
 
 /**
  * SpotlightCard
  *
  * Wrapper que encapsula o efeito de brilho spotlight (borda + fundo).
- * O glow segue o cursor via CSS variables --mouse-x / --mouse-y,
+ * Desktop: o glow segue o cursor via CSS variables --mouse-x / --mouse-y,
  * atualizadas com requestAnimationFrame para manter 60fps.
+ * Mobile (sem hover): o card mais visível da tela ganha `data-focus` e a borda
+ * faz 1 volta de uma luz ("cobrinha") e assenta num anel azul suave.
  *
  * O estilo visual base vem da classe .spotlight-card em globals.css.
  * Use className para adicionar padding, tamanho, animação, etc.
@@ -28,6 +31,17 @@ export function SpotlightCard({
     ...props
 }: HTMLAttributes<HTMLDivElement> & { ref?: React.Ref<HTMLDivElement> }) {
     const rafIdRef = useRef<number | null>(null);
+    const localRef = useRef<HTMLDivElement | null>(null);
+    useViewportFocus(localRef);
+
+    const setRefs = useCallback(
+        (node: HTMLDivElement | null) => {
+            localRef.current = node;
+            if (typeof ref === 'function') ref(node);
+            else if (ref) (ref as React.RefObject<HTMLDivElement | null>).current = node;
+        },
+        [ref]
+    );
 
     const handleMouseMove = useCallback(
         (e: React.MouseEvent<HTMLDivElement>) => {
@@ -45,11 +59,13 @@ export function SpotlightCard({
 
     return (
         <div
-            ref={ref}
+            ref={setRefs}
             onMouseMove={handleMouseMove}
             className={cn('spotlight-card', className)}
             {...props}
         >
+            <span aria-hidden className="spotlight-ring" />
+            <span aria-hidden className="spotlight-snake" />
             {children}
         </div>
     );
