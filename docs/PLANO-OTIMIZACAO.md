@@ -98,3 +98,10 @@ Sem banco de dados e sem APIs: não há risco de dados nesta otimização.
 | 20/10 | Publicação (PR #3) + teste no ar | nota 93/90/100/100 | 94/100/100/100; LCP real = FCP; páginas, imagem, sitemap e ícone ok; menu ok; 0 erros no console | 36981a1 |
 
 ² Desde 2023 o Google só mostra o destaque de perguntas frequentes para sites de governo e saúde; o FAQPage fica por ajudar buscas com IA. O ganho principal é o ProfessionalService/Person.
+
+## 6. Depois da publicação
+
+| Data | Item | Antes | Depois | Commit |
+|---|---|---|---|---|
+| 20/10 | Search Console: `richardgomes.com.br` como propriedade de domínio na conta profissional (TXT no DNS do Netlify) | sem cadastro | verificado | — |
+| 20/10 | Favicon com o monograma RG (o Search Console mostrava o triângulo padrão do Next/Vercel) | favicon.ico padrão, 26 KB | ico 16/32/48 (5 KB) + icon.png 192 | PR #4 |
