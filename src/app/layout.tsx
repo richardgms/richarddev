@@ -52,9 +52,10 @@ export const metadata: Metadata = {
       'Transforme visitantes em clientes com um site profissional e rápido. Solicite seu orçamento!',
     images: [
       {
-        url: '/assets/images/og-image.svg',
+        url: '/assets/images/og-image.png',
         width: 1200,
         height: 630,
+        type: 'image/png',
         alt: 'Richard Gomes - Desenvolvedor Web',
       },
     ],
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
     title: 'Criação de Sites e Landing Pages | Richard Gomes',
     description:
       'Transforme visitantes em clientes com um site profissional e rápido. Solicite seu orçamento!',
-    images: ['/assets/images/og-image.svg'],
+    images: ['/assets/images/og-image.png'],
   },
 };
 
