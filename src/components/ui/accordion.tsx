@@ -85,7 +85,7 @@ export function AccordionTrigger({
         accordion.setOpenValue(isOpen && accordion.collapsible ? null : item.value)
       }
     >
-      <span className={cn('text-base md:text-lg font-semibold transition-colors', isOpen ? 'text-brand' : 'text-white')}>
+      <span className={cn('text-base md:text-lg font-semibold transition-colors', isOpen ? 'text-brand-light' : 'text-white')}>
         {children}
       </span>
       <span className={cn('text-brand transition-transform duration-300 flex-shrink-0', isOpen ? 'rotate-180' : '')}>

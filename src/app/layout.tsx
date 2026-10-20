@@ -6,25 +6,24 @@ import { Footer } from '@/components/layout/Footer';
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
   variable: '--font-inter',
   display: 'swap',
 });
 
 const outfit = Outfit({
   subsets: ['latin'],
-  weight: ['400', '500', '700', '800'],
   variable: '--font-outfit',
   display: 'swap',
 });
 
 const lexend = Lexend({
   subsets: ['latin'],
-  weight: ['300', '400'],
   variable: '--font-lexend',
   display: 'swap',
 });
 
+// Inter, Outfit e Lexend sem `weight`: o arquivo variável já traz todos os pesos (evita negrito imitado).
+// JetBrains Mono limitada a 400–600: o eixo completo custa +9 KB e só usamos até 600.
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
@@ -53,9 +52,10 @@ export const metadata: Metadata = {
       'Transforme visitantes em clientes com um site profissional e rápido. Solicite seu orçamento!',
     images: [
       {
-        url: '/assets/images/og-image.svg',
+        url: '/assets/images/og-image.png',
         width: 1200,
         height: 630,
+        type: 'image/png',
         alt: 'Richard Gomes - Desenvolvedor Web',
       },
     ],
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     title: 'Criação de Sites e Landing Pages | Richard Gomes',
     description:
       'Transforme visitantes em clientes com um site profissional e rápido. Solicite seu orçamento!',
-    images: ['/assets/images/og-image.svg'],
+    images: ['/assets/images/og-image.png'],
   },
 };
 

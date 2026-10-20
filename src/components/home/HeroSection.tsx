@@ -14,10 +14,10 @@ export function HeroSection() {
             <div className="layout-container relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(380px,480px)] gap-10 lg:gap-20 items-center">
                     {/* Copy column */}
-                    <div className="flex flex-col gap-7 lg:gap-8 animate-[fadeInUp_0.8s_ease-out]">
+                    <div className="flex flex-col gap-7 lg:gap-8 motion-safe:animate-[riseIn_0.8s_ease-out]">
                         {/* Issue / eyebrow */}
                         <div className="flex items-center gap-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-text-muted">
-                            <span className="text-brand font-semibold">FULLSTACK & IA</span>
+                            <span className="text-brand-light font-semibold">FULLSTACK & IA</span>
                             <span className="w-[60px] h-px bg-brand" />
                             <span>Landing Pages de Alta Conversão</span>
                         </div>
@@ -107,7 +107,7 @@ export function HeroSection() {
 
                 {/* Ticker */}
                 <div className="va-ticker hidden md:flex items-center gap-4 mt-12 lg:mt-16 pt-4 border-t border-white/10 font-mono text-[11px] uppercase tracking-[0.14em] text-text-secondary">
-                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand/10 border border-brand/30 text-brand font-semibold">
+                    <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand/10 border border-brand/30 text-brand-light font-semibold">
                         <span className="w-1.5 h-1.5 rounded-full bg-brand shadow-[0_0_8px_var(--color-brand)]" />
                         Aceitando 2 projetos
                     </span>
@@ -117,7 +117,7 @@ export function HeroSection() {
                     <span className="hidden lg:inline">SEO técnico</span>
                     <span className="text-white/20 hidden lg:inline">/</span>
                     <span className="hidden lg:inline">Automações com IA</span>
-                    <span className="ml-auto text-brand">JOÃO PESSOA · PB · BRASIL</span>
+                    <span className="ml-auto text-brand-light">JOÃO PESSOA · PB · BRASIL</span>
                 </div>
             </div>
 
