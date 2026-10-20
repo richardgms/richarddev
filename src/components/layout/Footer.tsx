@@ -15,7 +15,7 @@ export function Footer() {
                 <div className="flex flex-col md:flex-row items-center justify-between w-full gap-8 mb-12">
 
                     <div className="text-center md:text-left">
-                        <Link href="/" className="inline-flex items-center gap-2.5 font-display text-xl md:text-2xl font-bold text-white tracking-tight mb-2" aria-label="Ir para a página inicial">
+                        <Link href="/" className="inline-flex items-center gap-2.5 font-display text-xl md:text-2xl font-bold text-white tracking-tight mb-2">
                             <span className="grid place-items-center w-[30px] h-[30px] rounded-full bg-background-deep border-[1.5px] border-white overflow-hidden box-border">
                                 <Image src="/assets/icons/rg-monogram.png" alt="" width={30} height={30} className="w-full h-full object-cover" />
                             </span>

@@ -31,7 +31,7 @@ export function Navbar() {
         >
             <div className="layout-container flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-3 font-display text-lg md:text-xl font-bold text-white tracking-tight" aria-label="Ir para a página inicial">
+                <Link href="/" className="flex items-center gap-3 font-display text-lg md:text-xl font-bold text-white tracking-tight">
                     <span className="grid place-items-center w-9 h-9 rounded-full bg-background-deep border-[1.5px] border-white overflow-hidden box-border">
                         <Image src="/assets/icons/rg-monogram.png" alt="" width={36} height={36} className="w-full h-full object-cover" />
                     </span>
@@ -80,7 +80,7 @@ export function Navbar() {
             <div
                 className={`md:hidden absolute top-full left-0 w-full bg-background-base border-b border-white/10 transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-96 py-4 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'
                     }`}
-                aria-hidden={!isMobileMenuOpen}
+                inert={!isMobileMenuOpen}
             >
                 <ul className="flex flex-col items-center gap-6">
                     {navLinks.map((link) => (
