@@ -27,7 +27,7 @@ export function SectionEyebrow({
       )}
     >
       <span className="h-1.5 w-1.5 rounded-full bg-brand shadow-[0_0_12px_var(--color-brand)]" />
-      <span className="font-mono text-text-muted">{number}</span>
+      <span className="font-mono font-semibold text-text-muted">{number}</span>
       {children}
     </span>
   );
