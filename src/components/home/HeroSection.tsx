@@ -14,7 +14,7 @@ export function HeroSection() {
             <div className="layout-container relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(380px,480px)] gap-10 lg:gap-20 items-center">
                     {/* Copy column */}
-                    <div className="flex flex-col gap-7 lg:gap-8 animate-[fadeInUp_0.8s_ease-out]">
+                    <div className="flex flex-col gap-7 lg:gap-8 motion-safe:animate-[riseIn_0.8s_ease-out]">
                         {/* Issue / eyebrow */}
                         <div className="flex items-center gap-3.5 font-mono text-[11px] uppercase tracking-[0.2em] text-text-muted">
                             <span className="text-brand font-semibold">FULLSTACK & IA</span>

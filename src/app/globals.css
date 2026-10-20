@@ -57,6 +57,16 @@
     }
   }
 
+  /* Entrada do topo sem começar invisível: o texto conta como pintado no 1º quadro (LCP) */
+  @keyframes riseIn {
+    from {
+      transform: translateY(24px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
