@@ -10,7 +10,14 @@ Método: skill `otimizar-site` (investigar tudo → etapas por risco → um item
 | Publicado (Netlify) | 93 | 90 | 100 | 100 | 1,3 s | 3,1 s | 62 ms | 0 | 370 KB |
 | Local (`next start`) | 89 | 90 | 100 | 100 | 0,9 s | 3,7 s | 33 ms | 0 | 408 KB |
 
+| Prévia Netlify (PR #3, 20/10) | 93 | 96 | 100 | 69¹ | 1,2 s | 2,9 s | 80 ms | 0 | 377 KB |
+| Produção no mesmo horário | 93 | 90 | 100 | 100 | 1,4 s | 2,9 s | 106 ms | 0 | 370 KB |
+
 Compare sempre local com local e publicado com publicado (o local não tem CDN nem compressão igual).
+Prévia medida com 5 rodadas e a barra de comentários do Netlify bloqueada (`--blocked-url-patterns="*/.netlify/scripts/*"`): ela só existe na prévia, causa erro de CSP e pesa 0,5 s de CPU.
+¹ A prévia recebe `X-Robots-Tag: noindex` do Netlify; em produção o SEO continua 100.
+
+**Por que a nota de desempenho quase não mudou:** o Lighthouse *simula* um celular lento e, neste site, amarra o LCP ao carregamento do JavaScript do Next (bloqueando o JS a nota local vai a 97). O que o visitante vê melhorou: no navegador real o LCP agora acontece junto com o primeiro desenho (FCP), antes vinha ~650 ms depois por causa da animação. Para subir a nota simulada, o caminho é menos JavaScript (D2).
 
 ## 2. Diagnóstico
 
@@ -47,8 +54,8 @@ Sem banco de dados e sem APIs: não há risco de dados nesta otimização.
 
 ## 3. Decisões pendentes
 
-- **D1 — Cor do texto do botão principal (A1).** Recomendo **texto branco** no azul atual (5,7:1, passa). Alternativa: escurecer o azul do botão. Manter como está deixa a acessibilidade abaixo de 100.
-- **D2 — Animações de surgir só com CSS (P4).** Tira o JS de 6 seções. Ganho pequeno (TBT já é baixo) e mexe em todas as seções. Recomendo **deixar para depois**.
+- **D1 — Cores com contraste (A1).** Três ajustes: (a) texto do botão principal em **branco** no azul atual (3,2 → 5,7:1); (b) cinza "muted" um pouco mais claro, `#6b7a99` → `#7a89a8` (4,5 → 5,1:1), e o © do rodapé sem a transparência; (c) azul em texto pequeno (rótulos como "FULLSTACK & IA", ".BR") usando o azul claro `#3380f2` (3,3 → 4,9:1). Recomendo **os três** (acessibilidade 96 → 100). Contra: muda levemente o visual da marca.
+- **D2 — Animações de surgir só com CSS (P4).** Tira o JS de 6 seções. Mexe em todas as seções, mas é o único caminho para subir a nota simulada (ver nota acima). Recomendo **fazer numa segunda rodada**, depois de publicar esta.
 - **D3 — Microsoft Clarity.** A CSP já libera, mas não está instalado. Recomendo **remover da CSP agora** e instalar só se quiser mapas de calor.
 - **D4 — Imagem de compartilhamento (S1).** Recomendo **converter o SVG atual para PNG 1200×630** (mesmo visual). Alternativa: nova arte com sua foto.
 - **D5 — Publicação.** Recomendo **um PR por etapa** mesclado no `main` (o Netlify publica ao mesclar), com prévia do Netlify para medir antes.
@@ -57,11 +64,11 @@ Sem banco de dados e sem APIs: não há risco de dados nesta otimização.
 
 | Etapa | Itens | Risco |
 |---|---|---|
-| 0 Preparação | build local ok, linha de base | — |
-| 1 Limpeza | O1, O2 | baixo |
-| 2 Ganhos rápidos | P1, P2, P3, A2, A3, A4, A1 (após D1) | baixo (visual) |
-| 3 SEO/compartilhamento | S1, S2, S3, S4 | baixo |
-| 4 Infra/segurança | I1, I2, I3 | médio (dependências e cabeçalhos) |
+| 0 Preparação ✅ | build local ok, linha de base | — |
+| 1 Limpeza ✅ | O1, O2 | baixo |
+| 2 Ganhos rápidos (falta A1/D1) | P1, P2, P3, A2, A3, A4, A1 (após D1) | baixo (visual) |
+| 3 SEO/compartilhamento (falta S1/D4) | S1, S2, S3, S4 | baixo |
+| 4 Infra/segurança ✅ (Clarity: D3) | I1, I2, I3 | médio (dependências e cabeçalhos) |
 | 5 JS (opcional) | P4 (após D2) | médio |
 | 6 Vigilância | medir no ar, atualizar docs e playbook | — |
 
@@ -69,4 +76,20 @@ Sem banco de dados e sem APIs: não há risco de dados nesta otimização.
 
 | Data | Item | Antes | Depois | Commit |
 |---|---|---|---|---|
-| 20/10 | Etapa 0 — investigação e linha de base | — | — | — |
+| 20/10 | Etapa 0 — investigação e linha de base | — | — | 60b197d |
+| 20/10 | O1 arquivos sem uso, monograma | 171 KB | 8 KB | 84cea55 |
+| 20/10 | O2 README, design system em docs/ | — | — | 5be05bb |
+| 20/10 | P1 entrada do topo sem opacidade | LCP real 1,0 s; simulado 3,7 s; nota 89 | LCP real 0,3 s; simulado 3,5 s; nota 91 (local) | 8b7bf15 |
+| 20/10 | P2 fontes com pesos reais | 4 negritos imitados, 152 KB | 0 imitados, 152 KB | 99ba666 |
+| 20/10 | P3 foto do topo | — | não compensa: 14 KB estimados, perderia nitidez em tela densa | — |
+| 20/10 | A2 A3 A4 menu, títulos, logo | acessib. 90 | 96 | c84c619 |
+| 20/10 | S2 sitemap/robots pelo Next | âncoras, data de fev | 1 URL, data do build | d99b802 |
+| 20/10 | S3 ícone de tela inicial | — | apple-icon 180 px | 08669bf |
+| 20/10 | S4 dados estruturados | — | Person, ProfessionalService, WebSite, FAQPage² | c6c82fa |
+| 20/10 | I1 Next 16.4.2 + audit fix | 6 vulnerab. (1 crítica) | 0 em produção (5 só no lint) | a321de2 |
+| 20/10 | I2 Node no Netlify | 20 | 24 (build da prévia ok) | f5db25f |
+| 20/10 | I3 cabeçalhos | unsafe-eval, X-Powered-By | só em dev; removido; Permissions-Policy | d37a8e2 |
+| 20/10 | extra: fillRule/clipRule em SVG (aviso do React) | 2 avisos | 0 | 4a25eb9 |
+| 20/10 | Push da branch + PR #3 (rascunho) com prévia | — | prévia ok | — |
+
+² Desde 2023 o Google só mostra o destaque de perguntas frequentes para sites de governo e saúde; o FAQPage fica por ajudar buscas com IA. O ganho principal é o ProfessionalService/Person.
