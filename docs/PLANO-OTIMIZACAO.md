@@ -54,10 +54,10 @@ Sem banco de dados e sem APIs: não há risco de dados nesta otimização.
 
 ## 3. Decisões pendentes
 
-- **D1 — Cores com contraste (A1).** Três ajustes: (a) texto do botão principal em **branco** no azul atual (3,2 → 5,7:1); (b) cinza "muted" um pouco mais claro, `#6b7a99` → `#7a89a8` (4,5 → 5,1:1), e o © do rodapé sem a transparência; (c) azul em texto pequeno (rótulos como "FULLSTACK & IA", ".BR") usando o azul claro `#3380f2` (3,3 → 4,9:1). Recomendo **os três** (acessibilidade 96 → 100). Contra: muda levemente o visual da marca.
+- **D1 — Cores com contraste (A1).** Três ajustes: (a) texto do botão principal em **branco** no azul atual (3,2 → 5,7:1); (b) cinza "muted" um pouco mais claro, `#6b7a99` → `#7a89a8` (4,5 → 5,1:1), e o © do rodapé sem a transparência; (c) azul em texto pequeno (rótulos como "FULLSTACK & IA", ".BR") usando o azul claro `#3380f2` (3,3 → 4,9:1). Recomendo **os três** (acessibilidade 96 → 100). Contra: muda levemente o visual da marca. Comparação A/B na página de acompanhamento; versão B pronta na branch `ab/cores-acessiveis`.
 - **D2 — Animações de surgir só com CSS (P4).** Tira o JS de 6 seções. Mexe em todas as seções, mas é o único caminho para subir a nota simulada (ver nota acima). Recomendo **fazer numa segunda rodada**, depois de publicar esta.
-- **D3 — Microsoft Clarity.** A CSP já libera, mas não está instalado. Recomendo **remover da CSP agora** e instalar só se quiser mapas de calor.
-- **D4 — Imagem de compartilhamento (S1).** Recomendo **converter o SVG atual para PNG 1200×630** (mesmo visual). Alternativa: nova arte com sua foto.
+- **D3 — Microsoft Clarity** (mapas de calor e gravação de visitas, grátis; ~25 KB de JS e pede aviso de privacidade pela LGPD). A CSP já libera, mas não está instalado. Recomendo **remover da CSP agora** e instalar só se quiser mapas de calor.
+- **D4 — Imagem de compartilhamento (S1).** ✅ Decidido: PNG da arte atual. Fonte SVG em `Documentos/Richard Gomes - Design/`.
 - **D5 — Publicação.** Recomendo **um PR por etapa** mesclado no `main` (o Netlify publica ao mesclar), com prévia do Netlify para medir antes.
 
 ## 4. Etapas
@@ -67,7 +67,7 @@ Sem banco de dados e sem APIs: não há risco de dados nesta otimização.
 | 0 Preparação ✅ | build local ok, linha de base | — |
 | 1 Limpeza ✅ | O1, O2 | baixo |
 | 2 Ganhos rápidos (falta A1/D1) | P1, P2, P3, A2, A3, A4, A1 (após D1) | baixo (visual) |
-| 3 SEO/compartilhamento (falta S1/D4) | S1, S2, S3, S4 | baixo |
+| 3 SEO/compartilhamento ✅ | S1, S2, S3, S4 | baixo |
 | 4 Infra/segurança ✅ (Clarity: D3) | I1, I2, I3 | médio (dependências e cabeçalhos) |
 | 5 JS (opcional) | P4 (após D2) | médio |
 | 6 Vigilância | medir no ar, atualizar docs e playbook | — |
@@ -91,5 +91,7 @@ Sem banco de dados e sem APIs: não há risco de dados nesta otimização.
 | 20/10 | I3 cabeçalhos | unsafe-eval, X-Powered-By | só em dev; removido; Permissions-Policy | d37a8e2 |
 | 20/10 | extra: fillRule/clipRule em SVG (aviso do React) | 2 avisos | 0 | 4a25eb9 |
 | 20/10 | Push da branch + PR #3 (rascunho) com prévia | — | prévia ok | — |
+| 20/10 | S1 imagem de compartilhamento | SVG (não aparece no WhatsApp) | PNG 1200×630, 150 KB; pílula do endereço corrigida | 6928733 |
+| 20/10 | D1 versão B das cores (branch `ab/cores-acessiveis`, não mesclada) | acessib. 96 | 100 (celular e computador) | c61bcd9 |
 
 ² Desde 2023 o Google só mostra o destaque de perguntas frequentes para sites de governo e saúde; o FAQPage fica por ajudar buscas com IA. O ganho principal é o ProfessionalService/Person.
