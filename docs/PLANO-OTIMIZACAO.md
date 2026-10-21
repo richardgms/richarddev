@@ -105,3 +105,4 @@ Sem banco de dados e sem APIs: não há risco de dados nesta otimização.
 |---|---|---|---|---|
 | 20/10 | Search Console: `richardgomes.com.br` como propriedade de domínio na conta profissional (TXT no DNS do Netlify) | sem cadastro | verificado | — |
 | 20/10 | Favicon com o monograma RG (o Search Console mostrava o triângulo padrão do Next/Vercel) | favicon.ico padrão, 26 KB | ico 16/32/48 (5 KB) + icon.png 192 | PR #4 |
+| 20/10 | Cloudflare Web Analytics (só no site publicado: `CONTEXT=production`; CSP + static.cloudflareinsights.com e cloudflareinsights.com) | sem medição de visitas | visitas chegando (POST 204); A/B intercalado 5×5 sem × com o contador: perf 89 × 91, sem efeito mensurável; +10 KB | PR #5 |
