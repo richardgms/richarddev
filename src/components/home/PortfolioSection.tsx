@@ -92,9 +92,9 @@ export function PortfolioSection() {
                                 <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent opacity-90"></div>
                             </div>
                             <CardContent className="p-6 flex flex-col flex-grow relative z-10 -mt-8 bg-surface">
-                                <h4 className="text-xl font-bold text-white mb-2 group-hover:text-brand transition-colors">{project.title}</h4>
+                                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand transition-colors">{project.title}</h3>
                                 <p className="text-sm text-[#a3aed0] leading-relaxed mb-6 flex-grow">{project.desc}</p>
-                                <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-brand transition-colors">
+                                <span className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-brand-light transition-colors">
                                     Visitar site 
                                     <svg 
                                         className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" 

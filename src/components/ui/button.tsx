@@ -18,7 +18,7 @@ type NativeButtonProps = CommonProps &
   AnchorHTMLAttributes<HTMLAnchorElement>;
 
 const variants: Record<ButtonVariant, string> = {
-  default: 'bg-brand text-background-base hover:bg-brand-light shadow-[0_4px_20px_var(--color-brand)] hover:shadow-[0_6px_25px_var(--color-brand)]',
+  default: 'bg-brand text-white hover:bg-brand-light shadow-[0_4px_20px_var(--color-brand)] hover:shadow-[0_6px_25px_var(--color-brand)]',
   outline: 'border border-white/15 bg-transparent text-white hover:bg-white/5',
   ghost: 'bg-transparent text-white hover:bg-white/5',
   secondary: 'bg-white/10 text-white hover:bg-white/15',

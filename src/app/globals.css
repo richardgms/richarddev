@@ -20,7 +20,7 @@
   --color-text-primary: #FFFFFF;
   --color-text-secondary: #a3aed0;
   /* Subdued text matching original dark mode */
-  --color-text-muted: #6b7a99;
+  --color-text-muted: #7a89a8;
   --color-text-accent: var(--color-brand);
 
   /* Typography */
@@ -53,6 +53,16 @@
     }
     to {
       opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Entrada do topo sem começar invisível: o texto conta como pintado no 1º quadro (LCP) */
+  @keyframes riseIn {
+    from {
+      transform: translateY(24px);
+    }
+    to {
       transform: translateY(0);
     }
   }

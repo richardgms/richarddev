@@ -31,11 +31,11 @@ export function Navbar() {
         >
             <div className="layout-container flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="flex items-center gap-3 font-display text-lg md:text-xl font-bold text-white tracking-tight" aria-label="Ir para a página inicial">
+                <Link href="/" className="flex items-center gap-3 font-display text-lg md:text-xl font-bold text-white tracking-tight">
                     <span className="grid place-items-center w-9 h-9 rounded-full bg-background-deep border-[1.5px] border-white overflow-hidden box-border">
                         <Image src="/assets/icons/rg-monogram.png" alt="" width={36} height={36} className="w-full h-full object-cover" />
                     </span>
-                    <span>Richard Gomes<span className="text-brand">.</span></span>
+                    <span>Richard Gomes<span className="text-brand-light">.</span></span>
                 </Link>
 
                 {/* Desktop Navigation */}
@@ -53,7 +53,7 @@ export function Navbar() {
                     <li>
                         <Link
                             href="#contato"
-                            className="group inline-flex items-center gap-1.5 rounded-full bg-brand px-5 py-2 text-xs font-semibold text-background-base shadow-[0_4px_20px_rgba(0,91,235,0.5)] transition-all duration-300 hover:bg-brand-light hover:shadow-[0_6px_25px_rgba(0,91,235,0.6)]"
+                            className="group inline-flex items-center gap-1.5 rounded-full bg-brand px-5 py-2 text-xs font-semibold text-white shadow-[0_4px_20px_rgba(0,91,235,0.5)] transition-all duration-300 hover:bg-brand-light hover:shadow-[0_6px_25px_rgba(0,91,235,0.6)]"
                         >
                             <span>Orçamento</span>
                             <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +80,7 @@ export function Navbar() {
             <div
                 className={`md:hidden absolute top-full left-0 w-full bg-background-base border-b border-white/10 transition-all duration-300 overflow-hidden ${isMobileMenuOpen ? 'max-h-96 py-4 opacity-100' : 'max-h-0 py-0 opacity-0 pointer-events-none'
                     }`}
-                aria-hidden={!isMobileMenuOpen}
+                inert={!isMobileMenuOpen}
             >
                 <ul className="flex flex-col items-center gap-6">
                     {navLinks.map((link) => (
@@ -97,7 +97,7 @@ export function Navbar() {
                     <li>
                         <Link
                             href="#contato"
-                            className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3 text-sm font-semibold text-background-base shadow-[0_4px_20px_rgba(0,91,235,0.5)] transition-all duration-300 hover:bg-brand-light"
+                            className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3 text-sm font-semibold text-white shadow-[0_4px_20px_rgba(0,91,235,0.5)] transition-all duration-300 hover:bg-brand-light"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
                             <span>Orçamento</span>

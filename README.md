@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# richardgomes.com.br
 
-## Getting Started
+Site de apresentação do Richard Gomes (desenvolvedor web freelancer): uma página única com serviços, método, portfólio, dúvidas e contato pelo WhatsApp.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router, página estática) + React 19
+- Tailwind CSS v4 (tokens em `src/app/globals.css`, bloco `@theme`)
+- Fontes via `next/font/google`: Inter (texto), Outfit (títulos), Lexend (destaques em itálico), JetBrains Mono (rótulos)
+- Hospedagem: Netlify (`netlify.toml`). Publica sozinho ao mesclar no `main`.
+
+## Rodar
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # build de produção
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estrutura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/app/            layout (metadados, fontes), página, estilos globais
+src/components/home seções da página, na ordem em que aparecem
+src/components/ui   componentes reutilizáveis (SpotlightCard, botão, acordeão…)
+src/hooks/          animação ao rolar e foco dos cards no celular
+public/assets/      fotos, cards do portfólio, monograma, imagem de compartilhamento
+docs/               design system e plano de otimização
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Documentação
 
-## Learn More
+- `docs/design-system.md`: padrões visuais e o SpotlightCard.
+- `docs/PLANO-OTIMIZACAO.md`: auditoria de velocidade, acessibilidade, SEO e segurança, com notas antes e depois.
 
-To learn more about Next.js, take a look at the following resources:
+## Trabalho novo
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Sempre em branch nova a partir do `main`, com PR. Mídia original e arquivos de design ficam fora do git (pastas ignoradas no `.gitignore`).
