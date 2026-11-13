@@ -9,11 +9,11 @@ const devEval = process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : '';
 
 const cspHeader = `
     default-src 'self';
-    script-src 'self' 'unsafe-inline'${devEval} https://static.cloudflareinsights.com;
+    script-src 'self' 'unsafe-inline'${devEval} https://static.cloudflareinsights.com https://*.googletagmanager.com;
     style-src 'self' 'unsafe-inline';
     img-src 'self' blob: data: https:;
     font-src 'self' https://fonts.gstatic.com;
-    connect-src 'self' https://cloudflareinsights.com;
+    connect-src 'self' https://cloudflareinsights.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com;
     object-src 'none';
     base-uri 'self';
     form-action 'self';

@@ -27,9 +27,9 @@ export function Footer() {
                     </div>
 
                     <nav className="flex items-center gap-6" aria-label="Navegação do Rodapé">
-                        <Link href="#home" className="text-sm text-[#a3aed0] hover:text-white transition-colors">Início</Link>
-                        <Link href="#servicos" className="text-sm text-[#a3aed0] hover:text-white transition-colors">Serviços</Link>
-                        <Link href="#portfolio" className="text-sm text-[#a3aed0] hover:text-white transition-colors">Portfólio</Link>
+                        <Link href="/#home" className="text-sm text-[#a3aed0] hover:text-white transition-colors">Início</Link>
+                        <Link href="/#servicos" className="text-sm text-[#a3aed0] hover:text-white transition-colors">Serviços</Link>
+                        <Link href="/#portfolio" className="text-sm text-[#a3aed0] hover:text-white transition-colors">Portfólio</Link>
                     </nav>
 
                     <div className="flex items-center gap-4">
@@ -53,7 +53,7 @@ export function Footer() {
                 {/* Inferior */}
                 <div className="flex flex-col md:flex-row items-center justify-between w-full gap-3">
                     <p className="text-xs text-text-muted">
-                        &copy; {currentYear} Richard Gomes - Todos os direitos reservados
+                        &copy; {currentYear} Richard Gomes - Todos os direitos reservados · <Link href="/privacidade" className="underline hover:text-white transition-colors">Privacidade</Link>
                     </p>
                     <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-text-muted">
                         richardgomes<span className="text-brand-light">.br</span>

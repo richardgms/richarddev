@@ -4,6 +4,7 @@ import './globals.css';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
 import { CloudflareAnalytics } from '@/components/analytics/CloudflareAnalytics';
+import { GoogleTag } from '@/components/layout/GoogleTag';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -84,6 +85,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <CloudflareAnalytics />
+        <GoogleTag />
       </body>
     </html>
   );
