@@ -1,9 +1,31 @@
 import type { Metadata } from 'next';
 
+const title = 'Política de Privacidade | Richard Gomes';
+const description = 'Como o site richardgomes.com.br usa cookies e o Google Analytics.';
+
 export const metadata: Metadata = {
-  title: 'Política de Privacidade | Richard Gomes',
-  description: 'Como o site richardgomes.com.br usa cookies e o Google Analytics.',
+  title,
+  description,
   alternates: { canonical: '/privacidade' },
+  openGraph: {
+    type: 'website',
+    url: '/privacidade',
+    title,
+    description,
+    images: [{
+      url: '/assets/images/og-image.png',
+      width: 1200,
+      height: 630,
+      type: 'image/png',
+      alt: 'Richard Gomes - Desenvolvedor Web',
+    }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title,
+    description,
+    images: ['/assets/images/og-image.png'],
+  },
 };
 
 export default function PrivacidadePage() {
