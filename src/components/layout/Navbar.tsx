@@ -17,10 +17,10 @@ export function Navbar() {
     }, []);
 
     const navLinks = [
-        { href: '#home', label: 'Início' },
-        { href: '#servicos', label: 'Serviços' },
-        { href: '#portfolio', label: 'Portfólio' },
-        { href: '#faq', label: 'Dúvidas' },
+        { href: '/#home', label: 'Início' },
+        { href: '/#servicos', label: 'Serviços' },
+        { href: '/#portfolio', label: 'Portfólio' },
+        { href: '/#faq', label: 'Dúvidas' },
     ];
 
     return (
@@ -52,7 +52,7 @@ export function Navbar() {
                     ))}
                     <li>
                         <Link
-                            href="#contato"
+                            href="/#contato"
                             className="group inline-flex items-center gap-1.5 rounded-full bg-brand px-5 py-2 text-xs font-semibold text-white shadow-[0_4px_20px_rgba(0,91,235,0.5)] transition-all duration-300 hover:bg-brand-light hover:shadow-[0_6px_25px_rgba(0,91,235,0.6)]"
                         >
                             <span>Orçamento</span>
@@ -96,7 +96,7 @@ export function Navbar() {
                     ))}
                     <li>
                         <Link
-                            href="#contato"
+                            href="/#contato"
                             className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3 text-sm font-semibold text-white shadow-[0_4px_20px_rgba(0,91,235,0.5)] transition-all duration-300 hover:bg-brand-light"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
