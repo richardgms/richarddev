@@ -32,7 +32,7 @@ docs/               design system e plano de otimização
 ## Documentação
 
 - `docs/design-system.md`: padrões visuais e o SpotlightCard.
-- `docs/PLANO-OTIMIZACAO.md`: auditoria de velocidade, acessibilidade, SEO e segurança, com notas antes e depois.
+- `docs/PLANO-OTIMIZACAO.md`: auditoria de velocidade, acessibilidade, SEO e segurança; SEO/AEO/GEO e validação da prévia na seção 7.
 
 ## Trabalho novo
 

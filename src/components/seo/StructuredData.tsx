@@ -2,7 +2,7 @@ import { faqs } from '@/data/faqs';
 
 const SITE = 'https://richardgomes.com.br';
 
-// Dados estruturados (schema.org) para o Google entender quem presta o serviço e mostrar as dúvidas.
+// Descreve o profissional, o serviço e as dúvidas visíveis; não garante rich results ou citações em IA.
 const data = {
   '@context': 'https://schema.org',
   '@graph': [
